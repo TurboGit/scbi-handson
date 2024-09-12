@@ -1,0 +1,48 @@
+
+function h-handson-lib-vcs()
+{
+    echo default
+    echo none
+    echo git
+    echo https://github.com/TurboGit/scbi-handson-lib.git
+}
+
+function h-handson-lib-env()
+{
+    local PREFIX=$1
+    local TARGET=$2
+
+    add-to-var CMAKE_PREFIX_PATH $PREFIX/lib/cmake
+}
+
+function h-handson-lib-config()
+{
+    local PREFIX=$1
+    local TARGET=$2
+
+    cmake -DCMAKE_INSTALL_PREFIX=$PREFIX ../src
+}
+
+function h-handson-lib-build()
+{
+    local PREFIX=$1
+    local TARGET=$2
+
+    make
+}
+
+function h-handson-lib-install()
+{
+    local PREFIX=$1
+    local TARGET=$2
+
+    make install
+}
+
+function h-handson-lib-prefix()
+{
+    local PREFIX=$1
+    local TARGET=$2
+
+    echo NONE
+}

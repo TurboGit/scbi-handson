@@ -1,0 +1,62 @@
+
+function h-handson-app-vcs()
+{
+    echo default
+    echo none
+    echo git
+    echo https://github.com/TurboGit/scbi-handson-app.git
+}
+
+function h-handson-app-depends()
+{
+    local PREFIX=$1
+    local TARGET=$2
+
+    echo h-handson-lib
+}
+
+function h-handson-app-config()
+{
+    local PREFIX=$1
+    local TARGET=$2
+
+    cmake -DCMAKE_INSTALL_PREFIX=$PREFIX ../src
+}
+
+function h-handson-app-build()
+{
+    local PREFIX=$1
+    local TARGET=$2
+
+    make
+}
+
+function h-handson-app-install()
+{
+    local PREFIX=$1
+    local TARGET=$2
+
+    make install
+}
+
+function h-handson-app-tests()
+{
+    local PREFIX=$1
+    local TARGET=$2
+
+    V=$($PREFIX/bin/greeter)
+
+    if [[ "$V" == "hey hello goodbye" ]]; then
+        echo OK
+    else
+        echo NOK - expected \"hey hello goodbye\", found \"$V\"
+    fi
+}
+
+function h-handson-app-prefix()
+{
+    local PREFIX=$1
+    local TARGET=$2
+
+    echo NONE
+}
