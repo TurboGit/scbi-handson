@@ -7,6 +7,7 @@ all: clean.install
 	rm -f $(SCRDIR)/*~ scripts.d/*~
 	rm -f $(SCRDIR)/.*~ scripts.d/.*~
 	cp -r scripts.d/* $(SCRDIR)
+	cp -r scripts.d/.plan-* $(SCRDIR)
 	echo "SCBI hands-on : ${VER}" > $(SCRDIR)/.scbi_handson_version.txt
 
 	cd scripts.d; find . -type f > $(SCRDIR)/.handson.plugins
